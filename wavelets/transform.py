@@ -393,7 +393,7 @@ class WaveletTransform(object):
         elif not self.unbias:
             return np.abs(self.wavelet_transform) ** 2
 
-    def reconstruction(self, scales=None):
+    def reconstruction(self, scales=None, W_n=None):
         """Reconstruct the original signal from the wavelet
         transform. See S3.i.
 
@@ -421,7 +421,8 @@ class WaveletTransform(object):
             self.scales = scales
 
         s = self.scales
-        W_n = self.wavelet_transform
+        if W_n is None:
+            W_n = self.wavelet_transform
 
         if scales is not None:
             self.scales = old_scales
