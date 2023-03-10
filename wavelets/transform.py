@@ -101,7 +101,7 @@ def cwt_time(data, wavelet, widths, dt, axis):
         norm = (dt / width) ** .5
         wavelet_data = norm * wavelet(t, width)
         output[ind, :] = scipy.signal.fftconvolve(data,
-                                                  wavelet_data[slices],
+                                                  wavelet_data,
                                                   mode='same')
     return output
 
